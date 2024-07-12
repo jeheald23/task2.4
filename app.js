@@ -8,18 +8,18 @@ const app = express();
 app.use(fileUpload());
 
 const UPLOAD_TEMP_PATH = 'uploads';
-const IMAGES_BUCKET = 'my-cool-local-bucket';
+const IMAGES_BUCKET = 'task2-4bucket';  // Your S3 bucket name
 
 const s3Client = new S3Client({
     region: 'us-east-1',
-    endpoint: 'http://localhost:4566',
-    forcePathStyle: true,
-    credentials: {
-        accessKeyId: 'test',
-        secretAccessKey: 'test',
-    },
+    // Assuming you are running on an EC2 instance with an IAM role assigned
+    // credentials: {
+    //     accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
+    //     secretAccessKey: 'YOUR_AWS_SECRET_ACCESS_KEY',
+    // },
 });
 
+// Create the bucket if it does not exist
 const createBucketIfNotExists = async (bucketName) => {
     try {
         await s3Client.send(new ListObjectsV2Command({ Bucket: bucketName }));
