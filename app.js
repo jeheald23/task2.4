@@ -12,11 +12,6 @@ const IMAGES_BUCKET = 'task2-4bucket';  // Your S3 bucket name
 
 const s3Client = new S3Client({
     region: 'us-east-1',
-    // Assuming you are running on an EC2 instance with an IAM role assigned
-    // credentials: {
-    //     accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
-    //     secretAccessKey: 'YOUR_AWS_SECRET_ACCESS_KEY',
-    // },
 });
 
 // Create the bucket if it does not exist
